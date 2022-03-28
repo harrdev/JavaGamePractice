@@ -21,6 +21,20 @@ public class Player extends GlobalPosition {
 	public void update() {
 		x += velX;
 		y += velY;
+
+		// Collision with outside border
+		if (x < 0) {
+			x = 0;
+		}
+		if (y < 0) {
+			y = 0;
+		}
+		if (x > 640 - 74) {
+			x = 640 - 74;
+		}
+		if (y > 480 - 102) {
+			y = 480 - 102;
+		}
 	}
 
 	public void draw(Graphics2D g2d) {
