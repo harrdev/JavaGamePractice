@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import com.jasonharr.src.input.KeyInput;
 import com.jasonharr.src.objects.Player;
 
 public class Game extends JPanel implements ActionListener {
@@ -28,6 +29,8 @@ public class Game extends JPanel implements ActionListener {
 		gameLoopTimer = new Timer(10, this);
 		gameLoopTimer.start();
 		p = new Player(120, 100);
+
+		addKeyListener(new KeyInput(p));
 	}
 
 	// Function to allow to paint on screen
