@@ -2,17 +2,20 @@ package com.jasonharr.src.objects;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
+import java.util.LinkedList;
 
 import javax.swing.ImageIcon;
 
 import com.jasonharr.src.GlobalPosition;
+import com.jasonharr.src.input.Controller;
 
 public class Player extends GlobalPosition {
 
 	private String playerimage = "/images/player.png";
-	int velX = 0;
-	int velY = 0;
+	private int velX = 0, velY = 0;
+	private LinkedList<Enemy> e = Controller.getEnemyBounds();
 
 	public Player(int x, int y) {
 		super(x, y);
@@ -35,6 +38,19 @@ public class Player extends GlobalPosition {
 		if (y > 480 - 102) {
 			y = 480 - 102;
 		}
+		Collision();
+	}
+
+	public void Collision() {
+		for (int i = 0; i < e.size(); i++) {
+			if (getBounds().intersects(e.get(i).getBounds())) {
+				System.out.println("COLLISION");
+			}
+		}
+	}
+
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, 59, 66);
 	}
 
 	public void draw(Graphics2D g2d) {

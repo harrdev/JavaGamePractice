@@ -7,13 +7,14 @@ import com.jasonharr.src.objects.Enemy;
 
 public class Controller {
 
-	LinkedList<Enemy> e = new LinkedList<Enemy>();
+	static LinkedList<Enemy> e = new LinkedList<Enemy>();
 
 	Enemy TempEnemy;
 
 	public Controller() {
 		addEnemy(new Enemy(100, 100));
 		addEnemy(new Enemy(200, 200));
+		addEnemy(new Enemy(400, 400));
 	}
 
 	public void draw(Graphics2D g2d) {
@@ -40,6 +41,10 @@ public class Controller {
 
 	public void removeEnemy(Enemy enemy) {
 		e.remove(enemy);
+	}
+
+	public static LinkedList<Enemy> getEnemyBounds() {
+		return e;
 	}
 
 }
