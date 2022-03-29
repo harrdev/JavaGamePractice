@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import com.jasonharr.src.input.KeyInput;
+import com.jasonharr.src.objects.Enemy;
 import com.jasonharr.src.objects.Player;
 
 public class Game extends JPanel implements ActionListener {
@@ -20,6 +21,7 @@ public class Game extends JPanel implements ActionListener {
 	// Game Loop
 	Timer gameLoopTimer;
 	Player p;
+	Enemy e;
 
 	public Game() {
 		// Ensures the window is focused so you don't have to click on the window first
@@ -29,6 +31,7 @@ public class Game extends JPanel implements ActionListener {
 		gameLoopTimer = new Timer(10, this);
 		gameLoopTimer.start();
 		p = new Player(120, 100);
+		e = new Enemy(200, 200);
 
 		addKeyListener(new KeyInput(p));
 	}
@@ -41,6 +44,7 @@ public class Game extends JPanel implements ActionListener {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(getBackgroundImage(), 0, 0, null);
 		p.draw(g2d);
+		e.draw(g2d);
 	}
 
 	public Image getBackgroundImage() {
@@ -51,8 +55,9 @@ public class Game extends JPanel implements ActionListener {
 	// Runs this code every 10 milliseconds. ActionListener requires this, it is
 	// implemented in the class
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		p.update();
+	public void actionPerformed(ActionEvent ee) {
 		repaint();
+		p.update();
+		e.update();
 	}
 }
