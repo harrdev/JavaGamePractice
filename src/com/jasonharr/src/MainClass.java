@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 
 public class MainClass {
 
+	public static final int WIDTH = 640, HEIGHT = 480;
+
 	public static void main(String[] args) {
 		// Create game window with JFrame
 		JFrame frame = new JFrame();
@@ -13,7 +15,7 @@ public class MainClass {
 		// Create game object
 		frame.add(new Game());
 		frame.pack();
-		frame.setSize(640, 480);
+		frame.setSize(WIDTH, HEIGHT);
 		frame.setResizable(false);
 		// Make sure window appears in center of screen
 		frame.setLocationRelativeTo(null);

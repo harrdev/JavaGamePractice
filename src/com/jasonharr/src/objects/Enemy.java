@@ -6,8 +6,11 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import com.jasonharr.src.GlobalPosition;
+import com.jasonharr.src.MainClass;
 
 public class Enemy extends GlobalPosition {
+
+	int speed = 5;
 
 	private String image = "/images/enemy.png";
 
@@ -20,7 +23,13 @@ public class Enemy extends GlobalPosition {
 	}
 
 	public void update() {
-
+		x += speed;
+		if (x > MainClass.WIDTH - 60) {
+			speed = -5;
+		}
+		if (x < 0) {
+			speed = 5;
+		}
 	}
 
 	public Image getEnemyImage() {
